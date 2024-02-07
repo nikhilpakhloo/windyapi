@@ -1,0 +1,28 @@
+export const coordinates = [
+    {
+      name: 'Puerto Calero Wrecks',
+      coords: [28.91521668, -13.70477412],
+    },
+    {
+      name: 'Restinga De Las Anclas',
+      coords: [36.80430241, -2.058906555],
+    },
+    { name: 'Enanos', coords: [28.66739489, -17.7576828] },
+    { name: 'Ss Tunstall', coords: [43.32486548, -8.694391251] },
+    { name: 'Ferranelles', coords: [42.04199454, 3.22522223] },
+    { name: 'Tunel De Lava', coords: [29.21540671, -13.54356766] },
+    { name: 'El Berenguel', coords: [36.72244344, -3.726232052] },
+    { name: 'Canons De Fora', coords: [41.9179902, 3.233027458] },
+    { name: 'Black Beach', coords: [28.92009119, -13.67201328] },
+    { name: 'Ain-Jema', coords: [28.14223782, -15.40521383] },
+    { name: 'El Salpatxot', coords: [42.04948384, 3.219219446] },
+    { name: 'Erkowit', coords: [43.35039795, -8.362827301] },
+    { name: 'The Stairs', coords: [36.00564556, -5.608273745] },
+    { name: 'Taballera', coords: [42.33913318, 3.245751858] },
+    { name: 'Second Llosa', coords: [38.5180863, -0.1225662231] },
+    { name: 'Islote De La Galera', coords: [42.33916282, 3.242704868] },
+    { name: 'Los Canones', coords: [43.47501859, -3.754706383] },
+    { name: 'Bajo De Dentro', coords: [37.64505838, -0.6811952591] },
+    { name: 'La Granadella', coords: [38.71337569, 0.3639221191] },
+    { name: 'El Salto', coords: [27.66650154, -18.0320406] },
+     ];
