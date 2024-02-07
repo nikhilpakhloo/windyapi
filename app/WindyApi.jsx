@@ -6,6 +6,7 @@ import { coordinates } from "./Coordinates";
 
 const WeatherMap = () => {
   const mapInstanceRef = useRef(null);
+  const layerGroupRef = useRef(null);
 
   const windyApiScript = document.createElement("script");
   windyApiScript.src = "https://api.windy.com/assets/map-forecast/libBoot.js";
@@ -18,8 +19,8 @@ const WeatherMap = () => {
         key: process.env.NEXT_PUBLIC_WINDY_MAP_API_KEY,
         overlay: "currentsTide",
         zoom: 4,
-        lat:42.33913318,
-        lon:3.245751858
+        lat: -34.0026880174215,
+        lon: 151.22563361947
       };
 
       if (!mapInstanceRef.current && window.windyInit) {
@@ -27,24 +28,27 @@ const WeatherMap = () => {
           const { map } = windyAPI;
 
           mapInstanceRef.current = map;
+          layerGroupRef.current = L.layerGroup().addTo(map);
 
           coordinates.forEach((location) => {
+            const { name, Latitude, Longitude } = location;
+
             if (map) {
-              const circleSVG = `<svg height="50" width="50">
-              <circle cx="25" cy="25" r="25" stroke="red" stroke-width="2" fill="none" />
-              <circle cx="25" cy="25" r="5" fill="blue" />
-                                  </svg>`;
+              const circle = L.circle([Latitude, Longitude], {
+                color: 'red',
+                fillColor: 'blue',
+                fillOpacity: 0.5,
+                radius: 20000
+              }).addTo(layerGroupRef.current);
 
-              const marker = L.marker(location.coords, {
-                icon: L.divIcon({
-                  html: `<div class="circle-marker">${circleSVG}</div>`,
-                  className: "custom-marker",
-                  iconSize: [50, 50],
-                  iconAnchor: [25, 25],
-                }),
-              }).addTo(map);
+              const customIcon = L.icon({
+                iconUrl: '/assets/bluedot.png',
+                iconSize: [20, 20],
+                iconAnchor: [10, 10] 
+              });
 
-              marker.bindPopup(location.name, {});
+              const marker = L.marker([Latitude, Longitude], { icon: customIcon }).addTo(layerGroupRef.current);
+              marker.bindPopup(name, {});
             }
           });
         });
